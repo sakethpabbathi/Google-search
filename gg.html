@@ -61,48 +61,48 @@
     };
 
 
-    // Enter key triggers search
-    document.querySelector('.input-field').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            document.getElementById('searchBtn').click();
-        }
-    });
+    // // Enter key triggers search
+    // document.querySelector('.input-field').addEventListener('keydown', function(e) {
+    //     if (e.key === 'Enter') {
+    //         e.preventDefault();
+    //         document.getElementById('searchBtn').click();
+    //     }
+    // });
 
-    // Language change
-    document.querySelectorAll('.lang a').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            let lang = this.getAttribute('data-lang');
-            window.location.href = "https://www.google.com/?hl=" + lang;
-        });
-    });
+    // // Language change
+    // document.querySelectorAll('.lang a').forEach(function(link) {
+    //     link.addEventListener('click', function(e) {
+    //         e.preventDefault();
+    //         let lang = this.getAttribute('data-lang');
+    //         window.location.href = "https://www.google.com/?hl=" + lang;
+    //     });
+    // });
 
-    // Microphone (Speech Recognition)
-    const micBtn = document.getElementById('micBtn');
-    const inputField = document.querySelector('.input-field');
-    if ('webkitSpeechRecognition' in window) {
-        const recognition = new webkitSpeechRecognition();
-        recognition.lang = 'en-IN';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
+    // // Microphone (Speech Recognition)
+    // const micBtn = document.getElementById('micBtn');
+    // const inputField = document.querySelector('.input-field');
+    // if ('webkitSpeechRecognition' in window) {
+    //     const recognition = new webkitSpeechRecognition();
+    //     recognition.lang = 'en-IN';
+    //     recognition.interimResults = false;
+    //     recognition.maxAlternatives = 1;
 
-        micBtn.onclick = function() {
-            recognition.start();
-        };
+    //     micBtn.onclick = function() {
+    //         recognition.start();
+    //     };
 
-        recognition.onresult = function(event) {
-            inputField.value = event.results[0][0].transcript;
-        };
+    //     recognition.onresult = function(event) {
+    //         inputField.value = event.results[0][0].transcript;
+    //     };
 
-        recognition.onerror = function(event) {
-            alert('Speech recognition error: ' + event.error);
-        };
-    } else {
-        micBtn.onclick = function() {
-            alert('Speech recognition is not supported in this browser.');
-        };
-    }
+    //     recognition.onerror = function(event) {
+    //         alert('Speech recognition error: ' + event.error);
+    //     };
+    // } else {
+    //     micBtn.onclick = function() {
+    //         alert('Speech recognition is not supported in this browser.');
+    //     };
+    // }
     </script>
 </body>
 </html>
