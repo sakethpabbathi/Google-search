@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <link rel="stylesheet" href="gg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="G.png">
+</head>
+<body>
+    <div class="a">
+        <a href="https://www.google.com/">
+            <img src="googlelogo.png" alt="Google Logo">
+        </a>
+    </div>
+
+    <form class="inline" onsubmit="return false;">
+        <div class="input-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="input-icon">
+                <button type="button" id="micBtn" title="Search by voice" style="background:none;border:none;cursor:pointer;">
+                    <i class="fa-solid fa-microphone"></i>
+                </button>
+                
+                    <i class="fa-solid fa-house"></i>
+                    <input class="input-field" type="search" id="box" placeholder="" autocomplete="off">
+                </div>
+            </div>
+        
+    </form>
+
+    <div class="b">
+        <button id="searchBtn">Google Search</button>
+        <button id="feelingLuckyBtn">I'm Feeling Lucky</button>
+    </div>
+
+    <div class="languages">
+        <span>Google offered in:</span>
+        <div class="lang">
+            <span><a href="#" data-lang="hi">हिन्दी</a></span>
+            <span><a href="#" data-lang="bn">বাংলা</a></span>
+            <span><a href="#" data-lang="te">తెలుగు</a></span>
+            <span><a href="#" data-lang="mr">मराठी</a></span>
+            <span><a href="#" data-lang="ta">தமிழ்</a></span>
+            <span><a href="#" data-lang="gu">ગુજરાતી</a></span>
+            <span><a href="#" data-lang="kn">ಕನ್ನಡ</a></span>
+            <span><a href="#" data-lang="ml">മലയാളം</a></span>
+            <span><a href="#" data-lang="pa">ਪੰਜਾਬੀ</a></span>
+        </div>
+    </div>
+
+    <script>
+    // Search button
+    document.getElementById('searchBtn').onclick = function() {
+        let query = document.querySelector('.input-field').value.trim();
+        if (query) {
+            window.open("https://www.google.com/search?q=" + encodeURIComponent(query), "_self");
+        }
+    };
+
+
+    // Enter key triggers search
+    document.querySelector('.input-field').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            document.getElementById('searchBtn').click();
+        }
+    });
+
+    // Language change
+    document.querySelectorAll('.lang a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            let lang = this.getAttribute('data-lang');
+            window.location.href = "https://www.google.com/?hl=" + lang;
+        });
+    });
+
+    // Microphone (Speech Recognition)
+    const micBtn = document.getElementById('micBtn');
+    const inputField = document.querySelector('.input-field');
+    if ('webkitSpeechRecognition' in window) {
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-IN';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        micBtn.onclick = function() {
+            recognition.start();
+        };
+
+        recognition.onresult = function(event) {
+            inputField.value = event.results[0][0].transcript;
+        };
+
+        recognition.onerror = function(event) {
+            alert('Speech recognition error: ' + event.error);
+        };
+    } else {
+        micBtn.onclick = function() {
+            alert('Speech recognition is not supported in this browser.');
+        };
+    }
+    </script>
+</body>
+</html>

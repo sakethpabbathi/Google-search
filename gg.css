@@ -1,0 +1,137 @@
+
+
+
+
+
+
+/* Reset some defaults */
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.a {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.a img {
+    width: 272px;
+    height: 92px;
+}
+
+.inline {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.input-icons {
+    position: relative;
+    width: 560px;
+    max-width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    width: 174%;
+    padding: 12px 90px 12px 44px; /* left for search icon, right for mic/house */
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+    border-color: #4285f4;
+}
+
+.input-icons i.fa-magnifying-glass {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9aa0a6;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.input-icons #micBtn {
+    position: absolute;
+    right: 44px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #4285f4;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 8px;
+    outline: none;
+}
+
+.input-icons i.fa-house {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9aa0a6;
+    font-size: 18px;
+}
+
+.b {
+    margin-top: 24px;
+}
+
+.b button {
+    background: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-size: 14px;
+    margin: 0 4px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.b button:hover {
+    border: 1px solid #dadce0;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.languages {
+    margin-top: 32px;
+    color: #5f6368;
+    font-size: 14px;
+}
+
+.lang {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.lang span {
+    margin-right: 8px;
+}
+
+.lang a {
+    color: #1a0dab;
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+
+.lang a:hover {
+    text-decoration: underline;
+    background: #f1f3f4;
+}
